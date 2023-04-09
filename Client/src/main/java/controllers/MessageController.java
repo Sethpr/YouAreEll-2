@@ -11,7 +11,7 @@ import models.Message;
 public class MessageController {
 
     private HashSet<Message> messagesSeen;
-    // why a HashSet?? //unique ids from sequence
+    // why a HashSet??
 
     public ArrayList<Message> getMessages() {
         return new ArrayList<>(messagesSeen);

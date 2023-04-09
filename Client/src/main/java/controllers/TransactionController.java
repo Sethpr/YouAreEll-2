@@ -21,6 +21,8 @@ public class TransactionController {
     private IdController idCtrl;
 
     public TransactionController(MessageController m, IdController j) {
+        msgCtrl = m;
+        idCtrl = j;
     }
 
     public List<Id> getIds() {
@@ -32,6 +34,10 @@ public class TransactionController {
 //        tid = idCtrl.postId(tid);
 //        return ("Id registered.");
 //    }
+
+    public void testIDC(){
+        System.out.println(idCtrl.toString());
+    }
 
 
     public String process(HttpURLConnection con) throws IOException {
@@ -46,12 +52,8 @@ public class TransactionController {
         return s.toString();
     }
 
-    public boolean isRegistered(String id) throws IOException {
-        URL url = new URL("http://zipcode.rocks:8085/ids");
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        String result = process(con);
-        return Arrays.asList(result.split(",")).contains("\"github\":\""+ id + "\"}");
+    public boolean isRegistered(String id) {
+        return idCtrl.isRegistered(id);
     }
 
 

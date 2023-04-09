@@ -131,6 +131,11 @@ public class SimpleShell {
                     pb.command(list);
                 }
 
+                if(list.contains("set")){
+                    webber.set(list.get(1));
+                    continue;
+                }
+
                 // // wait, wait, what curiousness is this?
                  Process process = pb.start();
 
